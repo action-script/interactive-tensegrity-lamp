@@ -27,6 +27,6 @@ License
 Copyright (c) 2016 Nuño de la Serna  
 Licensed under the Apache License Version 2.0
 
-   [instructables]: <http://www.instructables.com/member/Action-Script/>
+   [instructables]: <http://www.instructables.com/id/Interactive-Led-Lamp-Tensegrity-Structure-Arduino/>
    [Arduino IDE]: <https://www.arduino.cc/en/Main/Software>
    [configure your IDE]: <https://learn.adafruit.com/adafruit-arduino-ide-setup/overview>
