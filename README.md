@@ -19,7 +19,9 @@ PlatformIO will automatically installed the corresponding libraries when run the
 ### Run on Linux
 Linux is fairly picky about who can poke and prod at the USB port. You can always run avrdude or Arduino IDE as root, which will make sure you have the proper permissions.
 Also, you can add a udev rule which will let any user (who is not root) connect to the USBtiny driver.
-```sh SUBSYSTEM=="usb", ATTRS{product}=="USBtiny", ATTRS{idProduct}=="0c9f", ATTRS{idVendor}=="1781", MODE="0660", GROUP="**ADD_GROUP**" ```
+```bash
+SUBSYSTEM=="usb", ATTRS{product}=="USBtiny", ATTRS{idProduct}=="0c9f", ATTRS{idVendor}=="1781", MODE="0660", GROUP="**ADD_GROUP**"
+```
 
 
 License
