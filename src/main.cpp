@@ -1,11 +1,4 @@
-// color data structure
-struct RGBW {
-  public:
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-    uint8_t white;
-};
+#include <stdint.h>
 
 // AC
 #include "ACAngle.h"
@@ -46,19 +39,17 @@ void loop() {
         map(roll, 0, 360, 0, 100),
         map(min(pitch, 40), 40, 0, 100, 0), // saturation
         map(min(pitch, 30), 30, 0, 50, 0) // lightness
-      );  
-  
+      );
+
       RGBW opposite_color = HSLtoRGB(
         map( (roll + OPPOSITE_ANGLE) % 360 , 0, 360, 0, 100),
         map(min(pitch, 40), 40, 0, 100, 0), // saturation
         map(min(pitch, 30), 30, 0, 50, 0) // lightness
       );
-      
-      opposite_color.white = map(min(pitch, 30), 30, 0, 0, 255);
-      new_color.white = opposite_color.white;
-      
-      Leds.addColor(new_color);
-      Leds.addOppositeColor(opposite_color);
+
+      new_color.white = opposite_color.white = map(min(pitch, 30), 30, 0, 0, 255);
+
+      Leds.setGradientColor(new_color, opposite_color);
     }
 
     else {
@@ -67,19 +58,19 @@ void loop() {
         map(max(pitch, 110), 110, 180, 100, 0), // saturation
         map(max(pitch, 160), 160, 180, 50, 0) // lightness
       );
-  
+
       new_color.white = map(max(pitch, 100), 100, 180, 0, 255);
-  
-      Leds.addColor(new_color);
+
+      Leds.pushPixelColor(new_color);
     }
-    
+
     ac_timer = millis();
   }
 
   if (millis() - leds_timer >= LED_REFRESH) {
     Leds.updateColors();
     Leds.displayLamp();
-    
+
     leds_timer = millis();
   }
 }

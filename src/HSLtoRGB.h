@@ -1,6 +1,19 @@
+#pragma once
+
+#include <stdint.h>
+
 /*
- * color value RGB from HSL 
+ * color value RGB from HSL
  */
+
+// color data structure
+struct RGBW {
+  public:
+  uint8_t red;
+  uint8_t green;
+  uint8_t blue;
+  uint8_t white;
+};
 
 float hue2rgb (float p, float q, float t){
   if(t < 0) t += 1;
@@ -17,7 +30,7 @@ RGBW HSLtoRGB (uint8_t hue, uint8_t saturation, uint8_t lightness) {
   float l = lightness / 100.0;
 
   RGBW color;
-  float r, g, b;    
+  float r, g, b;
 
   if(s == 0) {
       r = g = b = l;
@@ -28,7 +41,7 @@ RGBW HSLtoRGB (uint8_t hue, uint8_t saturation, uint8_t lightness) {
       r = hue2rgb(p, q, h + 1/3.0);
       g = hue2rgb(p, q, h);
       b = hue2rgb(p, q, h - 1/3.0);
-  }  
+  }
 
   color.red =   r * 255;
   color.green = g * 255;
