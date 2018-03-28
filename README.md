@@ -22,7 +22,10 @@ Also, you can add a udev rule which will let any user (who is not root) connect 
 ```bash
 SUBSYSTEM=="usb", ATTRS{product}=="USBtiny", ATTRS{idProduct}=="0c9f", ATTRS{idVendor}=="1781", MODE="0660", GROUP="**ADD_GROUP**"
 ```
-
+### Upload with PlatformIO
+```bash
+$ sudo platformio run --target upload
+```
 
 License
 ----
