@@ -1,9 +1,5 @@
 #include <stdint.h>
 
-// color helper
-#include "HSLtoRGB.h"
-
-
 // AC
 #include "ACAngle.h"
 ACAngle AC;
@@ -51,11 +47,9 @@ void loop() {
         map(min(pitch, 30), 30, 0, 50, 0) // lightness
       );
 
-      opposite_color.white = map(min(pitch, 30), 30, 0, 0, 255);
-      new_color.white = opposite_color.white;
+      new_color.white = opposite_color.white = map(min(pitch, 30), 30, 0, 0, 255);
 
-      Leds.addColor(new_color);
-      Leds.addOppositeColor(opposite_color);
+      Leds.setGradientColor(new_color, opposite_color);
     }
 
     else {
@@ -67,7 +61,7 @@ void loop() {
 
       new_color.white = map(max(pitch, 100), 100, 180, 0, 255);
 
-      Leds.addColor(new_color);
+      Leds.pushPixelColor(new_color);
     }
 
     ac_timer = millis();

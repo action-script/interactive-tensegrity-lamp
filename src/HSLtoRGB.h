@@ -1,3 +1,7 @@
+#pragma once
+
+#include <stdint.h>
+
 /*
  * color value RGB from HSL
  */
